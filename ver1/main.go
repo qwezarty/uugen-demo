@@ -8,7 +8,7 @@ import (
 	"github.com/google/uuid" // importing from a domain
 )
 
-func main() { // main() is unique per package
+func main() { // main() is unique per project
 	// router table
 	http.HandleFunc("/uuid", handler)
 
@@ -16,6 +16,7 @@ func main() { // main() is unique per package
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	// := means define and init
 	u, err := uuid.NewUUID() // multiple return values
 	if err != nil {
 		// error handling without try-catch

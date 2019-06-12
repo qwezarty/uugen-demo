@@ -10,7 +10,7 @@ import (
 	"github.com/google/uuid"
 )
 
-var num int32
+var count int32
 
 func main() {
 	// router table
@@ -30,10 +30,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	json.NewEncoder(w).Encode(u.String())
 
-	// Built-in Atomic ops
-	atomic.AddInt32(&num, 1)
+	// Built-in atomic ops
+	atomic.AddInt32(&count, 1) // we can also swap pointer
+	// pointer is very important in Go
 }
 
 func counter(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "%d", atomic.LoadInt32(&num))
+	fmt.Fprintf(w, "Count %d", atomic.LoadInt32(&count))
 }

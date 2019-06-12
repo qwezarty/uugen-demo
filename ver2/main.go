@@ -10,9 +10,10 @@ import (
 	"github.com/google/uuid"
 )
 
-// behave like a abstract class
+// all basic data types are not thread-safe in Go
+// behave like a anonymous class, def and init.
 var count struct {
-	num int // zero value of 0
+	num int // zero value of int, i.e. 0
 	mux sync.Mutex
 }
 
